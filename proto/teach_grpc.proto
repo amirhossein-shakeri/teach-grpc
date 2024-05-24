@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option go_package = "github.com/amirhossein-shakeri/teach-grpc";
+option java_multiple_files = true;
+
+package pb; // teach_grpc_
+
+
+// protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative proto/teach_grpc.proto
+service Greeter {
+  // Sends a greeting
+  rpc SayHello(HelloRequest) returns (HelloReply) {}
+  rpc Health(HealthRequest) returns (HealthReply) {}
+}
+
+// service GreeterClient {
+//   rpc Health(HealthRequest) returns (HealthReply) {}
+// }
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+message HealthRequest {}
+
+message HealthReply {
+  bool ok = 1;
+  string message = 2;
+}
